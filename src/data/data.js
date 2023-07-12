@@ -1,22 +1,31 @@
-export const data = [
+export const users = [
   {
-    name: 'Adam',
-    age: 28,
-    group: 'Sem I / Group B',
+    name: 'Adam Romański',
+    attendance: '39%',
+    average: '2.3',
   },
   {
-    name: 'Roman',
-    age: 30,
-    group: 'Sem III / Group C',
+    name: 'Krzysztof Batko',
+    attendance: '23%',
+    average: '3.3',
   },
   {
-    name: 'Ania',
-    age: 27,
-    group: 'Sem I / Group A',
+    name: 'Patrycja Gonciarz',
+    attendance: '45%',
+    average: '4.3',
   },
   {
-    name: 'Karol',
-    age: 31,
-    group: 'Sem IV / Group A',
+    name: 'Olga Hahn',
+    attendance: '56%',
+    average: '4.1',
+  },
+  {
+    name: 'Paweł Andrzejewski',
+    attendance: '29%',
+    average: '2.4',
+  },
+  {
+    name: 'Paweł Roman',
+    average: '2.4',
   },
 ];
