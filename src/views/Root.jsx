@@ -1,9 +1,10 @@
 import { GlobalStyle } from '../assets/styles/GlobalStyle.jsx';
 import UsersList from '../components/organisms/UsersList/UsersList.jsx';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
+import { theme } from '../assets/styles/Theme.jsx';
 
 const StyledWrapper = styled.div`
-  background-color: #f7f8fa;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,12 +13,12 @@ const StyledWrapper = styled.div`
 `;
 
 const Root = () => (
-  <>
+  <ThemeProvider theme={theme}>
     <GlobalStyle />
     <StyledWrapper>
       <UsersList />
     </StyledWrapper>
-  </>
+  </ThemeProvider>
 );
 
 export default Root;

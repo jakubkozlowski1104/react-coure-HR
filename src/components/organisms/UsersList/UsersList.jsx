@@ -3,7 +3,7 @@ import UsersListItem from '../../../components/molecules/UsersListItem/UsersList
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.white};
   width: 100%;
   max-width: 500px;
   padding: 40px 30px;

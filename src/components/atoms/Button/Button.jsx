@@ -4,7 +4,8 @@ import { ReactComponent as DeleteIcon } from '../../../assets/Icons/delete-icon.
 const StyledButton = styled.button`
   width: 40px;
   height: 40px;
-  background-color: ${({ isSecondary }) => (isSecondary ? '#e7e844' : '#c0c7d6')};
+  background-color: ${({ theme }) => theme.colors.grey};
+  /* background-color: ${({ isSecondary }) => (isSecondary ? '#e7e844' : '#c0c7d6')}; */
   border-radius: 50px;
   border: none;
   cursor: pointer;
@@ -21,7 +22,7 @@ const StyledButton = styled.button`
 
 const Button = () => {
   return (
-    <StyledButton isSecondary>
+    <StyledButton>
       <DeleteIcon />
     </StyledButton>
   );
