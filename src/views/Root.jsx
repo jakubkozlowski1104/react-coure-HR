@@ -1,4 +1,5 @@
-import UsersList from '../components/UsersList/UsersList';
+import { GlobalStyle } from '../assets/styles/GlobalStyle.jsx';
+import UsersList from '../components/organisms/UsersList/UsersList.jsx';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
@@ -11,9 +12,12 @@ const StyledWrapper = styled.div`
 `;
 
 const Root = () => (
-  <StyledWrapper>
-    <UsersList />
-  </StyledWrapper>
+  <>
+    <GlobalStyle />
+    <StyledWrapper>
+      <UsersList />
+    </StyledWrapper>
+  </>
 );
 
 export default Root;

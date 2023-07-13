@@ -1,5 +1,5 @@
 import { users } from '../../../data/data';
-import UsersListItem from '../../../UsersListItem/UsersListItem';
+import UsersListItem from '../../../components/molecules/UsersListItem/UsersListItem';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div`

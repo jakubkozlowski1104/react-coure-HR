@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { ReactComponent as DeleteIcon } from '../../../assets/Icons/delete-icon.svg';
+import Button from '../../atoms/Button/Button';
 
 const StledLi = styled.li`
   display: flex;
@@ -16,24 +16,6 @@ const StledLi = styled.li`
   }
 `;
 
-const StyledButton = styled.button`
-  width: 40px;
-  height: 40px;
-  background-color: ${({ isSecondary }) => (isSecondary ? '#e7e844' : '#c0c7d6')};
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  svg {
-    stroke: red;
-    width: 100px;
-    height: 100%;
-  }
-`;
-
 const UsersListItem = ({ userData: { name, average, attendance = '0%' } }) => {
   return (
     <StledLi>
@@ -42,9 +24,7 @@ const UsersListItem = ({ userData: { name, average, attendance = '0%' } }) => {
         <p>{name}</p>
         <p>attendance: {attendance}</p>
       </div>
-      <StyledButton isSecondary>
-        <DeleteIcon />
-      </StyledButton>
+      <Button />
     </StledLi>
   );
 };
