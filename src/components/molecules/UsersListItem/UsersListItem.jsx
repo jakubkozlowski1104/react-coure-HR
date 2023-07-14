@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 import Button from '../../atoms/Button/Button';
 import { StyledLi, StyledAverage } from '../UsersListItem/UsersListItem.styles.jsx';
 
-const UsersListItem = ({ userData: { name, average, attendance = '0%' } }) => {
+const showIndex = (idx) => alert(`This is student #${idx + 1}`);
+
+const UsersListItem = ({ index, userData: { name, average, attendance = '0%' } }) => {
   return (
     <StyledLi>
       <StyledAverage average={average}>
@@ -12,7 +14,7 @@ const UsersListItem = ({ userData: { name, average, attendance = '0%' } }) => {
         <p className="name">{name}</p>
         <p className="attend">attendance: {attendance}</p>
       </div>
-      <Button />
+      <Button onClick={() => showIndex(index)} />
     </StyledLi>
   );
 };

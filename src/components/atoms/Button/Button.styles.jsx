@@ -11,14 +11,16 @@ export const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
 
+  &:hover {
+    svg {
+      stroke: red;
+      stroke-width: 0.82px;
+    }
+  }
+
   svg {
     margin-left: 1px;
     width: 15px;
     height: 15px;
-  }
-
-  svg:hover {
-    stroke: red;
-    stroke-width: 0.82px;
   }
 `;
