@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   background-color: ${({ theme }) => theme.colors.grey};
   border-radius: 50px;
   border: none;
@@ -12,8 +12,8 @@ export const StyledButton = styled.button`
   align-items: center;
 
   svg {
-    stroke: red;
-    width: 100px;
-    height: 100%;
+    margin-left: 1px;
+    width: 15px;
+    height: 15px;
   }
 `;

@@ -8,6 +8,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   *, *::after, *::before {
+    margin: 0;
+    padding: 0;
     box-sizing: inherit;
   }
 
@@ -15,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
   }
 
-  a, button {
+  a, button, p {
     font-family: 'Montserrat', sans-serif;
   }
 `;

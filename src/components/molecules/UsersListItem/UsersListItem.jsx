@@ -7,9 +7,9 @@ const UsersListItem = ({ userData: { name, average, attendance = '0%' } }) => {
   return (
     <StyledLi>
       <AverageItem average={average} />
-      <div>
-        <p>{name}</p>
-        <p>attendance: {attendance}</p>
+      <div className="info">
+        <p className="name">{name}</p>
+        <p className="attend">attendance: {attendance}</p>
       </div>
       <Button />
     </StyledLi>
