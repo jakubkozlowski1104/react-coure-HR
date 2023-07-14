@@ -16,4 +16,9 @@ export const StyledButton = styled.button`
     width: 15px;
     height: 15px;
   }
+
+  svg:hover {
+    stroke: red;
+    stroke-width: 0.82px;
+  }
 `;

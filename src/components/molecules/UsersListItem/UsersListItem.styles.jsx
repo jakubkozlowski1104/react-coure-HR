@@ -36,3 +36,24 @@ export const StyledLi = styled.li`
     }
   }
 `;
+
+export const StyledAverage = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: ${({ average, theme }) => {
+    if (average > 4) return theme.colors.success;
+    if (average > 3) return theme.colors.warning;
+    if (average > 2) return theme.colors.error;
+    return theme.colors.grey;
+  }};
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: ${({ theme }) => theme.fontSize.l};
+    font-weight: bold;
+    color: ${({ theme }) => theme.colors.white};
+  }
+`;

@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import Button from '../../atoms/Button/Button';
-import AverageItem from '../../atoms/AverageItem/AverageItem';
-import { StyledLi } from '../UsersListItem/UsersListItem.styles.jsx';
+import { StyledLi, StyledAverage } from '../UsersListItem/UsersListItem.styles.jsx';
 
 const UsersListItem = ({ userData: { name, average, attendance = '0%' } }) => {
   return (
     <StyledLi>
-      <AverageItem average={average} />
+      <StyledAverage average={average}>
+        <p>{average}</p>
+      </StyledAverage>
       <div className="info">
         <p className="name">{name}</p>
         <p className="attend">attendance: {attendance}</p>
