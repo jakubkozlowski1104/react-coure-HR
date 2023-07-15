@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Button from '../../atoms/Button/Button';
+import DeleteButton from '../../atoms/DeleteButton/DeleteButton';
 import { StyledLi, StyledAverage } from '../UsersListItem/UsersListItem.styles.jsx';
 
 const UsersListItem = ({ deleteUser, userData: { name, average, attendance = '0%' } }) => {
@@ -12,7 +12,7 @@ const UsersListItem = ({ deleteUser, userData: { name, average, attendance = '0%
         <p className="name">{name}</p>
         <p className="attend">attendance: {attendance}</p>
       </div>
-      <Button onClick={() => deleteUser(name)} />
+      <DeleteButton onClick={() => deleteUser(name)} />
     </StyledLi>
   );
 };
