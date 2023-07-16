@@ -1,8 +1,5 @@
 import UsersListItem from '../../../components/molecules/UsersListItem/UsersListItem';
-import { StyledWrapper, StyledTitle } from './UsersList.styles';
-import FormField from '../../molecules/FormFIeld/FormFIeld';
-import Button from '../../atoms/Button/Button';
-import { useState } from 'react';
+import { StyledWrapper } from './UsersList.styles';
 
 const UsersList = ({ users, deleteUser }) => {
   return (
