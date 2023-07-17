@@ -1,7 +1,7 @@
 import { ViewWrapper } from '../components/molecules/ViewWrapper/ViewWrapper.jsx';
 import UsersList from '../components/organisms/UsersList/UsersList';
 import { useContext } from 'react';
-import { UsersContext } from './Root.jsx';
+import { UsersContext } from '../providers/UsersProvider';
 
 const Dashboard = () => {
   const { users } = useContext(UsersContext);
