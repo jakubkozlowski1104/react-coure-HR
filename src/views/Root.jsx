@@ -47,7 +47,7 @@ const Root = () => {
             <Wrapper>
               <Routes>
                 <Route path="/add-user" element={<AddUser />} />
-                <Route path="/" element={<Dashboard deleteUser={deleteUser} users={users} />} />
+                <Route path="/" element={<Dashboard />} />
               </Routes>
             </Wrapper>
           </UsersContext.Provider>

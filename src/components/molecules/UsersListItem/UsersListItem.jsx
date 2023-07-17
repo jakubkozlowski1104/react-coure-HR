@@ -1,8 +1,12 @@
 import PropTypes from 'prop-types';
 import DeleteButton from '../../atoms/DeleteButton/DeleteButton';
 import { StyledLi, StyledAverage } from '../UsersListItem/UsersListItem.styles.jsx';
+import { useContext } from 'react';
+import { UsersContext } from '../../../views/Root';
 
-const UsersListItem = ({ deleteUser, userData: { name, average, attendance = '0%' } }) => {
+const UsersListItem = ({ userData: { name, average, attendance = '0%' } }) => {
+  const { deleteUser } = useContext(UsersContext);
+
   return (
     <StyledLi>
       <StyledAverage average={average}>
