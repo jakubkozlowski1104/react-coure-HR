@@ -1,25 +1,9 @@
 /* eslint-disable no-undef */
-import { useState } from 'react';
-import { render, screen } from '@testing-library/react';
+import FormField from '../FormFIeld/FormFIeld';
+import { renderWithProviders } from '../../../helpers/renderWithThemeProvider';
 
-const InputWithButton = () => {
-  const [inputValue, setInputValue] = useState('');
-
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  return (
-    <>
-      <input value={inputValue} onChange={handleInputChange} name="Name" id="name" placeholder="Enter your name" type="text" />
-      <button disabled>{!inputValue}Submit</button>
-    </>
-  );
-};
-
-describe('Input With Button', () => {
+describe('Form Field', () => {
   it('Renders the component', () => {
-    render(<InputWithButton />);
-    screen.getByText('Submit');
+    renderWithProviders(<FormField label="name" name="name" id="name" />);
   });
 });
