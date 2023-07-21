@@ -1,4 +1,4 @@
-import { useState, useContext, useReducer } from 'react';
+import { useContext, useReducer } from 'react';
 import { StyledTitle } from '../components/organisms/UsersList/UsersList.styles';
 import FormField from '../components/molecules/FormFIeld/FormFIeld';
 import Button from '../components/atoms/Button/Button';
@@ -71,8 +71,8 @@ const AddUser = () => {
           id="consent"
           name="consent"
           type="checkbox"
-          value={formValues.consent}
-          onChange={dispatch({ type: 'CONSENT TOGGLE' })}
+          value={formValues.average}
+          onChange={() => dispatch({ type: 'CONSENT TOGGLE' })}
         />
         <Button type="submit">Add user</Button>
         {formValues.error ? <p>{formValues.error}</p> : null}
