@@ -1,10 +1,10 @@
-import { useContext, useReducer } from 'react';
+import { useContext } from 'react';
 import { StyledTitle } from '../components/organisms/UsersList/UsersList.styles';
 import FormField from '../components/molecules/FormFIeld/FormFIeld';
 import Button from '../components/atoms/Button/Button';
 import { ViewWrapper } from '../components/molecules/ViewWrapper/ViewWrapper';
 import { UsersContext } from '../providers/UsersProvider';
-import { useWindowHeight } from '../hooks/UseWindowSize';
+import { useForm } from '../hooks/useForm';
 
 const initialFormState = {
   name: '',
@@ -14,50 +14,17 @@ const initialFormState = {
   error: '',
 };
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'INPUT CHANGE':
-      return {
-        ...state,
-        [action.field]: action.value,
-      };
-    case 'CLEAR VALUES':
-      return initialFormState;
-    case 'CONSENT TOGGLE':
-      return {
-        ...state,
-        consent: !state.consent,
-      };
-    case 'THROW ERROR':
-      return {
-        ...state,
-        error: action.errorValue,
-      };
-    default:
-      return state;
-  }
-};
-
 const AddUser = () => {
-  const [formValues, dispatch] = useReducer(reducer, initialFormState);
   const { handleAddUser } = useContext(UsersContext);
-  const dimensions = useWindowHeight();
-
-  const handleInputChange = (e) => {
-    dispatch({
-      type: 'INPUT CHANGE',
-      field: e.target.name,
-      value: e.target.value,
-    });
-  };
+  const { formValues, handleInputChange, handleClearForm, handleThrowError, handleToggleConsent } = useForm(initialFormState);
 
   const handleSubmitUser = (e) => {
     e.preventDefault();
     if (formValues.consent) {
       handleAddUser(formValues);
-      dispatch({ type: 'CLEAR VALUES' });
+      handleClearForm(initialFormState);
     } else {
-      dispatch({ type: 'THROW ERROR', errorValue: 'You need to give consent' });
+      handleThrowError('you have to check consent');
     }
   };
 
@@ -65,19 +32,10 @@ const AddUser = () => {
     <>
       <ViewWrapper as="form" onSubmit={handleSubmitUser}>
         <StyledTitle>Add new user</StyledTitle>
-        <StyledTitle>Screen width: {dimensions.width}</StyledTitle>
-        <StyledTitle>Screen height: {dimensions.height}</StyledTitle>
         <FormField label="Name" id="name" name="name" value={formValues.name} onChange={handleInputChange} />
         <FormField label="Attendance" id="attendance" name="attendance" value={formValues.attendance} onChange={handleInputChange} />
         <FormField label="Average" id="average" name="average" value={formValues.average} onChange={handleInputChange} />
-        <FormField
-          label="Consent"
-          id="consent"
-          name="consent"
-          type="checkbox"
-          value={formValues.average}
-          onChange={() => dispatch({ type: 'CONSENT TOGGLE' })}
-        />
+        <FormField label="Consent" id="consent" name="consent" type="checkbox" value={formValues.average} onChange={handleToggleConsent} />
         <Button type="submit">Add user</Button>
         {formValues.error ? <p>{formValues.error}</p> : null}
       </ViewWrapper>
