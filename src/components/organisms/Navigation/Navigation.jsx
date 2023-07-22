@@ -1,17 +1,3 @@
-// import { StyledNav, StyledLink } from './Navigation.styles';
-
-// const Navigation = () => {
-//   return (
-//     <StyledNav>
-//       <StyledLink to="/">Home</StyledLink>
-//       <StyledLink to="/add-user">Add user</StyledLink>
-//       <StyledLink to="/register">Register</StyledLink>
-//     </StyledNav>
-//   );
-// };
-
-// export default Navigation;
-
 import { Logo, StyledLink, Wrapper } from '../Navigation/Navigation.styles';
 
 const Navigation = () => {

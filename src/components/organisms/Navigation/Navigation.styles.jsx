@@ -1,22 +1,3 @@
-// import styled from 'styled-components';
-// import { Link } from 'react-router-dom';
-
-// export const StyledNav = styled.nav`
-//   display: flex;
-//   flex-direction: column;
-//   position: absolute;
-//   align-items: flex-end;
-//   gap: 10px;
-//   top: 0;
-//   left: 0;
-//   padding: 20px 50px 0 20px;
-//   background-color: #f7f8fa;
-//   height: 100vh;
-//   position: absolute;
-//   transition: 1s;
-
-// `;
-
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
@@ -28,6 +9,8 @@ export const Wrapper = styled.nav`
   border-right: 1px solid ${({ theme }) => theme.colors.darkPurple};
   justify-content: flex-start;
   padding: 30px 0;
+  grid-row: 1/3;
+  grid-column: 1/1;
 `;
 
 export const Logo = styled.div`
