@@ -3,43 +3,29 @@ import { NewsWrapper, NewsSectionHeader, ArticleWrapper, TitleWrapper, ContentWr
 import Button from '../../atoms/Button/Button';
 import axios from 'axios';
 
-// const QUERY = `{
-//   allArticles {
-//     id
-//     title
-//     category
-//     content
-//     image {
-//       url
-//     }
-//   }
-// }
-// '
+const QUERY = `{
+  allArticles {
+    id
+    title
+    category
+    content
+    image {
+      url
+    }
+  }
+}
+`;
 
 const NewsSection = () => {
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    console.log(import.meta.env.VITE_REACT_APP_DATOCMS_TOKEN);
     axios
       .post(
         'https://graphql.datocms.com/',
         {
-          query: `
-        {
-          allArticles {
-            id
-            title
-            category
-            content
-            image {
-              url
-            }
-          }
-        }
-        
-        `,
+          query: QUERY,
         },
         {
           headers: {
