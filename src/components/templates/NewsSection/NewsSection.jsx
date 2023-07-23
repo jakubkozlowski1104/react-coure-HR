@@ -1,21 +1,73 @@
-import { NewsWrapper, NewsSectionHeader, ArticleWrapper, TitleWrapper } from './NewsSection.styles';
+import { useState, useEffect } from 'react';
+import { NewsWrapper, NewsSectionHeader, ArticleWrapper, TitleWrapper, ContentWrapper } from './NewsSection.styles';
 import Button from '../../atoms/Button/Button';
+import axios from 'axios';
+
+const API_TOKEN = '02d3e6c04ab5b5a7dc2094d59983cc';
+// const QUERY = `{
+//   allArticles {
+//     id
+//     title
+//     category
+//     content
+//     image {
+//       url
+//     }
+//   }
+// }
+// '
 
 const NewsSection = () => {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    axios
+      .post(
+        'https://graphql.datocms.com/',
+        {
+          query: `
+        {
+          allArticles {
+            id
+            title
+            category
+            content
+            image {
+              url
+            }
+          }
+        }
+        
+        `,
+        },
+        {
+          headers: {
+            authorization: `Baerer ${API_TOKEN}`,
+          },
+        }
+      )
+      .then(({ data: { data } }) => {
+        setArticles(data.allArticles);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <NewsWrapper>
       <NewsSectionHeader>University news feed</NewsSectionHeader>
-      <ArticleWrapper>
-        <TitleWrapper>
-          <h3>Lorem, ipsum</h3>
-          <p>Tech news</p>
-        </TitleWrapper>
-        <p className="p-news">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi quos ducimus debitis fugit a temporibus nostrum nesciunt officia autem
-          inventore nihil cupiditate deserunt voluptate minima quod dolorem optio, modi ipsam!
-        </p>
-        <Button isBig>Read more</Button>
-      </ArticleWrapper>
+      {articles.map(({ title, category, content, image = 'null' }) => (
+        <ArticleWrapper key={title}>
+          <TitleWrapper>
+            <h3>{title}</h3>
+            <p>{category}</p>
+          </TitleWrapper>
+          <ContentWrapper>
+            <p className="p-news">{content}</p>
+            {image ? <img src={image.url} alt="article img" /> : null}
+          </ContentWrapper>
+          <Button isBig>Read more</Button>
+        </ArticleWrapper>
+      ))}
     </NewsWrapper>
   );
 };
