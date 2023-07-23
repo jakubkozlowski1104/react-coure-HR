@@ -3,7 +3,7 @@ import { NewsWrapper, NewsSectionHeader, ArticleWrapper, TitleWrapper, ContentWr
 import Button from '../../atoms/Button/Button';
 import axios from 'axios';
 
-const QUERY = `{
+export const QUERY = `{
   allArticles {
     id
     title
