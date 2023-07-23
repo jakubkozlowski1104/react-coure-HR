@@ -3,7 +3,6 @@ import { NewsWrapper, NewsSectionHeader, ArticleWrapper, TitleWrapper, ContentWr
 import Button from '../../atoms/Button/Button';
 import axios from 'axios';
 
-const API_TOKEN = '02d3e6c04ab5b5a7dc2094d59983cc';
 // const QUERY = `{
 //   allArticles {
 //     id
@@ -22,6 +21,7 @@ const NewsSection = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    console.log(import.meta.env.VITE_REACT_APP_DATOCMS_TOKEN);
     axios
       .post(
         'https://graphql.datocms.com/',
@@ -43,7 +43,7 @@ const NewsSection = () => {
         },
         {
           headers: {
-            authorization: `Baerer ${API_TOKEN}`,
+            authorization: `Baerer ${import.meta.env.VITE_REACT_APP_DATOCMS_TOKEN}`,
           },
         }
       )
