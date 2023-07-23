@@ -11,17 +11,27 @@ const SearchBarWrapper = styled.div`
   padding: 0 40px;
 
   ${Input} {
-    font-size: ${({ theme }) => theme.fontSize.xl};
+    padding: 16px 20px;
+    font-size: ${({ theme }) => theme.fontSize.s};
     width: 100%;
-    max-width: 350px;
+    max-width: 450px;
     border: ${({ theme }) => theme.colors.lightPurple};
+    margin-left: 30px;
+
+    &::placeholder {
+      font-size: ${({ theme }) => theme.fontSize.s};
+      border: ${({ theme }) => theme.colors.lightPurple};
+      opacity: 60%;
+    }
   }
 `;
 
 const StatusInfo = styled.div`
   color: ${({ theme }) => theme.colors.darkGrey};
   font-size: ${({ theme }) => theme.fontSize.l};
-  padding-right: 40px;
+  p {
+    width: 90px;
+  }
 `;
 
 const SearchBar = () => {
@@ -33,7 +43,7 @@ const SearchBar = () => {
           <strong>Teacher</strong>
         </p>
       </StatusInfo>
-      <Input />
+      <Input placeholder="find student" />
     </SearchBarWrapper>
   );
 };
