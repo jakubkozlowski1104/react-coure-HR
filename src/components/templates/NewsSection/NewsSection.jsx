@@ -10,8 +10,11 @@ const NewsSection = () => {
           <h3>Lorem, ipsum</h3>
           <p>Tech news</p>
         </TitleWrapper>
-        <p>Dolor sit amet</p>
-        <Button>Read more</Button>
+        <p className="p-news">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi quos ducimus debitis fugit a temporibus nostrum nesciunt officia autem
+          inventore nihil cupiditate deserunt voluptate minima quod dolorem optio, modi ipsam!
+        </p>
+        <Button isBig>Read more</Button>
       </ArticleWrapper>
     </NewsWrapper>
   );

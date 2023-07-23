@@ -19,10 +19,14 @@ export const NewsSectionHeader = styled.h2`
 
 export const ArticleWrapper = styled(ViewWrapper)`
   margin: 30px 0px;
+  padding: 30px;
   width: 100%;
   max-width: unset;
   border-radius: 12px;
   color: ${({ theme }) => theme.colors.darkGrey};
+  .p-news {
+    line-height: 1.4;
+  }
 `;
 
 export const TitleWrapper = styled.div`
@@ -32,6 +36,7 @@ export const TitleWrapper = styled.div`
   }
 
   p {
+    padding-bottom: 10px;
     margin: 0;
     font-size: ${({ theme }) => theme.fontSize.m};
   }
