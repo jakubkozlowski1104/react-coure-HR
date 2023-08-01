@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { ViewWrapper } from '../components/molecules/ViewWrapper/ViewWrapper.jsx';
 import UsersList from '../components/organisms/UsersList/UsersList';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
 
 const Dashboard = () => {
   const [students, setStudents] = useState([]);
