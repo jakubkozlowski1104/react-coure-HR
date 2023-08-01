@@ -1,7 +1,7 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import DeleteButton from '../../atoms/DeleteButton/DeleteButton';
 import { StyledLi, StyledAverage } from '../UsersListItem/UsersListItem.styles.jsx';
-import { useContext } from 'react';
 import { UsersContext } from '../../../providers/UsersProvider';
 
 const UsersListItem = ({ userData: { name, average, attendance = '0%' } }) => {

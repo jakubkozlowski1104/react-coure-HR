@@ -3,18 +3,19 @@ import { NewsWrapper, NewsSectionHeader, ArticleWrapper, TitleWrapper, ContentWr
 import Button from '../../atoms/Button/Button';
 import axios from 'axios';
 
-export const QUERY = `{
-  allArticles {
-    id
-    title
-    category
-    content
-    image {
-      url
-    }
-  }
-}
-`;
+export const query = `
+         {
+          allArticles {
+            id
+            title
+            category
+            content
+            image {
+              url
+            }
+          }
+        }
+      `;
 
 const NewsSection = () => {
   const [articles, setArticles] = useState([]);
@@ -25,7 +26,7 @@ const NewsSection = () => {
       .post(
         'https://graphql.datocms.com/',
         {
-          query: QUERY,
+          query: query,
         },
         {
           headers: {
@@ -36,9 +37,8 @@ const NewsSection = () => {
       .then(({ data: { data } }) => {
         setArticles(data.allArticles);
       })
-      .catch((err) => {
-        setError(`Sorry, we coldn't load articles for you`);
-        console.log(err);
+      .catch(() => {
+        setError(`Sorry, we couldn't load articles for you`);
       });
   }, []);
 
@@ -46,15 +46,15 @@ const NewsSection = () => {
     <NewsWrapper>
       <NewsSectionHeader>University news feed</NewsSectionHeader>
       {articles.length > 0 ? (
-        articles.map(({ title, category, content, image = 'null' }) => (
-          <ArticleWrapper key={title}>
+        articles.map(({ id, title, category, content, image = null }) => (
+          <ArticleWrapper key={id}>
             <TitleWrapper>
               <h3>{title}</h3>
               <p>{category}</p>
             </TitleWrapper>
             <ContentWrapper>
-              <p className="p-news">{content}</p>
-              {image ? <img src={image.url} alt="article img" /> : null}
+              <p>{content}</p>
+              {image ? <img src={image.url} alt="article" /> : null}
             </ContentWrapper>
             <Button $isBig>Read more</Button>
           </ArticleWrapper>
@@ -62,7 +62,6 @@ const NewsSection = () => {
       ) : (
         <NewsSectionHeader>{error ? error : 'Loading...'}</NewsSectionHeader>
       )}
-      {error ? <NewsSectionHeader>{error}</NewsSectionHeader> : null}
     </NewsWrapper>
   );
 };
