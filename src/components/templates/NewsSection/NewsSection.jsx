@@ -56,7 +56,7 @@ const NewsSection = () => {
               <p className="p-news">{content}</p>
               {image ? <img src={image.url} alt="article img" /> : null}
             </ContentWrapper>
-            <Button isBig>Read more</Button>
+            <Button $isBig>Read more</Button>
           </ArticleWrapper>
         ))
       ) : (

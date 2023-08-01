@@ -18,6 +18,7 @@ const Root = () => {
               <Route path="/" element={<Navigate to="/group" />} />
               <Route path="/add-user" element={<AddUser />} />
               <Route path="/group/:id" element={<Dashboard />} />
+              <Route path="/group" element={<Dashboard />} />
             </Routes>
           </Wrapper>
         </MainTemplate>
