@@ -1,11 +1,11 @@
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from '../assets/styles/GlobalStyle.jsx';
-import { theme } from '../assets/styles/Theme.jsx';
+import { GlobalStyle } from '../../assets/styles/GlobalStyle.jsx';
+import { theme } from '../../assets/styles/Theme.jsx';
 import { Wrapper } from './Root.styles.jsx';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import MainTemplate from '../components/templates/MainTemplate/MainTemplate.jsx';
-import AddUser from './AddUser.jsx';
-import Dashboard from '../views/Dashboard.jsx';
+import MainTemplate from '../../components/templates/MainTemplate/MainTemplate.jsx';
+import AddUser from '../AddUser/AddUser.jsx';
+import Dashboard from '../Dashboard/Dashboard.jsx';
 
 const Root = () => {
   return (

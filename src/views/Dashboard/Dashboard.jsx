@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ViewWrapper } from '../components/molecules/ViewWrapper/ViewWrapper.jsx';
-import UsersList from '../components/organisms/UsersList/UsersList';
+import { ViewWrapper } from '../../components/molecules/ViewWrapper/ViewWrapper.jsx';
+import UsersList from '../../components/organisms/UsersList/UsersList.jsx';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { StyledGroupsWrapper, StyledLink } from './Dashboard.styles.jsx';

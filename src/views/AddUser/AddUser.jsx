@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import { StyledTitle } from '../components/organisms/UsersList/UsersList.styles';
-import FormField from '../components/molecules/FormFIeld/FormFIeld';
-import Button from '../components/atoms/Button/Button';
-import { ViewWrapper } from '../components/molecules/ViewWrapper/ViewWrapper';
-import { UsersContext } from '../providers/UsersProvider';
-import { useForm } from '../hooks/useForm';
+import { StyledTitle } from '../../components/organisms/UsersList/UsersList.styles';
+import FormField from '../../components/molecules/FormFIeld/FormFIeld';
+import Button from '../../components/atoms/Button/Button';
+import { ViewWrapper } from '../../components/molecules/ViewWrapper/ViewWrapper';
+import { UsersContext } from '../../providers/UsersProvider';
+import { useForm } from '../../hooks/useForm';
 
 const initialFormState = {
   name: '',

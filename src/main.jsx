@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './views/Root.jsx';
+import App from './views/Root/Root';
 import { worker } from './mocks/browser.jsx';
 
 worker.start();
