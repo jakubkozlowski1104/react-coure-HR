@@ -21,7 +21,7 @@ const UsersListItem = ({ userData: { name, average, attendance = '0%' } }) => {
   );
 };
 
-UsersListItem.PropTypes = {
+UsersListItem.propTypes = {
   userData: PropTypes.shape({
     name: PropTypes.string,
     average: PropTypes.string,
