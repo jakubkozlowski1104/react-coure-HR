@@ -18,18 +18,19 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get(`/students/${id}`)
+      .get(`/students/${id || groups[0]}`)
       .then(({ data }) => setStudents(data.students))
       .catch((err) => console.log(err));
-  }, [id]);
+  }, [id, groups]);
 
   return (
     <ViewWrapper>
       <nav>
         {groups.map((group) => (
-          <NavLink key={group} to={`/group/${group}`}></NavLink>
+          <NavLink key={group} to={`/group/${group}`}>
+            {group}{' '}
+          </NavLink>
         ))}
-        <p>ELO</p>
       </nav>
       <UsersList users={students} />
     </ViewWrapper>
