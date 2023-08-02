@@ -33,9 +33,9 @@ const SearchBar = () => {
       </StatusInfo>
       <StyledListWrapper>
         <Input placeholder="find student" onChange={handleSearchStudents} onFocus={handleInputFocus} onBlur={handleInputBlur}></Input>
-        <StyledList isListVisible={isListVisible}>
+        <StyledList $isListVisible={isListVisible}>
           {searchOptions.map((student) => (
-            <li>{student}</li>
+            <li key={student}>{student}</li>
           ))}
         </StyledList>
       </StyledListWrapper>

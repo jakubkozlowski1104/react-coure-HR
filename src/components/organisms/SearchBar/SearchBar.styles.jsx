@@ -29,7 +29,7 @@ export const StyledListWrapper = styled.div`
 `;
 
 export const StyledList = styled.ul`
-  display: ${({ isListVisible }) => (isListVisible ? 'block' : 'none')};
+  display: ${({ $isListVisible }) => ($isListVisible ? 'block' : 'none')};
   padding: 10px;
   position: absolute;
   top: 7%;
