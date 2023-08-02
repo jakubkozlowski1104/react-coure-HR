@@ -1,33 +1,19 @@
-import { useState, useEffect } from 'react';
 import { ViewWrapper } from '../../components/molecules/ViewWrapper/ViewWrapper.jsx';
-import UsersList from '../../components/organisms/UsersList/UsersList.jsx';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import StudentsList from '../../components/organisms/StudentsList/StudentsList.jsx';
+import { Navigate, useParams } from 'react-router-dom';
 import { StyledGroupsWrapper, StyledLink } from './Dashboard.styles.jsx';
+import { useStudents } from '../../hooks/useStudents.jsx';
 
 const Dashboard = () => {
-  const [students, setStudents] = useState([]);
-  const [groups, setGroups] = useState([]);
+  const { groups } = useStudents();
   const { id } = useParams();
 
-  useEffect(() => {
-    axios
-      .get('/groups')
-      .then(({ data }) => setGroups(data.groups))
-      .catch((err) => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get(`/students/${id || groups[0]}`)
-      .then(({ data }) => setStudents(data.students))
-      .catch((err) => console.log(err));
-  }, [id, groups]);
+  if (!id && groups.length > 0) return <Navigate to={`/group/${groups[0]}`} />;
 
   return (
     <div>
       <StyledGroupsWrapper>
-        <p>Group {id || 'A'}</p>
+        <p>Group {id}</p>
         {groups.map((group) => (
           <StyledLink key={group} to={`/group/${group}`}>
             {group}
@@ -35,7 +21,7 @@ const Dashboard = () => {
         ))}
       </StyledGroupsWrapper>
       <ViewWrapper>
-        <UsersList users={students} />
+        <StudentsList />
       </ViewWrapper>
     </div>
   );
