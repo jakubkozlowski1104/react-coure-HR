@@ -4,6 +4,7 @@ import axios from 'axios';
 export const useStudents = ({ groupId = '' } = {}) => {
   const [students, setStudents] = useState([]);
   const [groups, setGroups] = useState([]);
+  const [allStudents, setAllStudents] = useState([]);
 
   useEffect(() => {
     axios
@@ -20,5 +21,15 @@ export const useStudents = ({ groupId = '' } = {}) => {
       .catch((err) => console.log(err));
   }, [groupId]);
 
-  return { students, groups };
+  useEffect(() => {
+    axios
+      .get(`/students`)
+      .then(({ data }) => {
+        const names = data.students.map((student) => student.name);
+        setAllStudents(names);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  return { students, groups, allStudents };
 };
