@@ -46,21 +46,20 @@ export const SearchResults = styled.ul`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.white};
+`;
 
-  li {
-    font-weight: bold;
-    color: ${({ theme }) => theme.colors.darkGrey};
-    background-color: ${({ theme }) => theme.colors.white};
-    width: 100%;
-    padding: 20px 5px;
-  }
+export const SearchResultItem = styled.li`
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.darkGrey};
+  background-color: ${({ theme, $isHighlighted }) => ($isHighlighted ? theme.colors.lightPurple : theme.colors.white)};
+  width: 100%;
+  padding: 20px 5px;
 
-  li:hover,
-  li:focus {
+  &:hover {
     background-color: ${({ theme }) => theme.colors.lightPurple};
   }
 
-  li:not(:last-child) {
+  &:not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.colors.darkPurple};
   }
 `;
