@@ -29,7 +29,7 @@ export const SearchBar = () => {
       </StatusInfo>
       <SearchWrapper>
         <Input {...getInputProps()} name="Search" id="Search" />
-        <SearchResults {...getMenuProps()}>
+        <SearchResults $isVisible={isOpen && matchingStudents.length > 0} {...getMenuProps()}>
           {isOpen &&
             matchingStudents.map((item, index) => (
               <SearchResultItem $isHighlighted={highlightedIndex === index} {...getItemProps({ item, index })} key={item.id}>
