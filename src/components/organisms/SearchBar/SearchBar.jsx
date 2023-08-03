@@ -1,27 +1,23 @@
-import { SearchBarWrapper, StyledListWrapper, StatusInfo, StyledList } from './SearchBar.styles';
+import { SearchBarWrapper, SearchResults, SearchWrapper, StatusInfo } from './SearchBar.styles';
 import { Input } from '../../atoms/Input/Input';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useStudents } from '../../../hooks/useStudents';
+import debounce from 'lodash.debounce';
 
-const SearchBar = () => {
-  const [searchOptions, setSearchOptions] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isListVisible, setListVisible] = useState(false);
-  const { allStudents } = useStudents();
+export const SearchBar = () => {
+  const [searchPhrase, setSearchPhrase] = useState('');
+  const [matchingStudents, setMatchingStudents] = useState('');
+  const { findStudents } = useStudents();
 
-  const handleSearchStudents = (e) => {
-    setSearchQuery(e.target.value);
-    const filteredStudents = allStudents.filter((student) => student.toLowerCase().includes(searchQuery.toLowerCase()));
-    setSearchOptions(filteredStudents);
-  };
+  const getMatchingStudents = debounce(async (e) => {
+    const { students } = await findStudents(searchPhrase);
+    setMatchingStudents(students);
+  }, 500);
 
-  const handleInputFocus = () => {
-    setListVisible(true);
-  };
-
-  const handleInputBlur = () => {
-    setListVisible(false);
-  };
+  useEffect(() => {
+    if (!searchPhrase) return;
+    getMatchingStudents(searchPhrase);
+  }, [searchPhrase, getMatchingStudents]);
 
   return (
     <SearchBarWrapper>
@@ -31,16 +27,18 @@ const SearchBar = () => {
           <strong>Teacher</strong>
         </p>
       </StatusInfo>
-      <StyledListWrapper>
-        <Input placeholder="find student" onChange={handleSearchStudents} onFocus={handleInputFocus} onBlur={handleInputBlur}></Input>
-        <StyledList $isListVisible={isListVisible}>
-          {searchOptions.map((student) => (
-            <li key={student}>{student}</li>
-          ))}
-        </StyledList>
-      </StyledListWrapper>
+      <SearchWrapper>
+        <Input onChange={(e) => setSearchPhrase(e.target.value)} value={searchPhrase} name="Search" id="Search" />
+        {searchPhrase && matchingStudents.length ? (
+          <SearchResults>
+            {matchingStudents.map((student) => (
+              <li key={student.id}>{student.name}</li>
+            ))}
+          </SearchResults>
+        ) : null}
+      </SearchWrapper>
     </SearchBarWrapper>
   );
 };
 
-export default SearchBar;
+export default SearchBar

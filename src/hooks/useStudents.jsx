@@ -4,32 +4,44 @@ import axios from 'axios';
 export const useStudents = ({ groupId = '' } = {}) => {
   const [students, setStudents] = useState([]);
   const [groups, setGroups] = useState([]);
-  const [allStudents, setAllStudents] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('/groups')
-      .then(({ data }) => setGroups(data.groups))
-      .catch((err) => console.log(err));
+    (async () => {
+      try {
+        const result = await axios.get('/groups');
+        setGroups(result.data.groups);
+      } catch (e) {
+        console.log(e);
+      }
+    })();
   }, []);
 
   useEffect(() => {
     if (!groupId) return;
-    axios
-      .get(`/students/${groupId}`)
-      .then(({ data }) => setStudents(data.students))
-      .catch((err) => console.log(err));
+    (async () => {
+      try {
+        const result = await axios.get(`/students/${groupId}`);
+        setStudents(result.data.students);
+      } catch (e) {
+        console.log(e);
+      }
+    })();
   }, [groupId]);
 
-  useEffect(() => {
-    axios
-      .get(`/students`)
-      .then(({ data }) => {
-        const names = data.students.map((student) => student.name);
-        setAllStudents(names);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const findStudents = async (searchPhrase) => {
+    try {
+      const { data } = await axios.post(`/students/search`, {
+        searchPhrase,
+      });
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-  return { students, groups, allStudents };
+  return {
+    students,
+    groups,
+    findStudents,
+  };
 };
