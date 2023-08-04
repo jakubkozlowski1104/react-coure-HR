@@ -5,6 +5,7 @@ import { Wrapper } from './Root.styles.jsx';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import MainTemplate from '../../components/templates/MainTemplate/MainTemplate.jsx';
 import Dashboard from '../Dashboard/Dashboard.jsx';
+import Modal from '../../components/organisms/Modal/Modal.jsx';
 
 const Root = () => {
   return (
@@ -12,6 +13,7 @@ const Root = () => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <MainTemplate>
+          <Modal />
           <Wrapper>
             <Routes>
               <Route path="/" element={<Navigate to="/group" />} />
