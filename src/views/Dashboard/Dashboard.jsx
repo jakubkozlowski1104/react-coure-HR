@@ -4,11 +4,14 @@ import { Navigate, useParams } from 'react-router-dom';
 import { StyledGroupsWrapper, StyledLink } from './Dashboard.styles.jsx';
 import { useStudents } from '../../hooks/useStudents.jsx';
 import { useState, useEffect } from 'react';
+import useModal from '../../components/organisms/Modal/useModal.jsx';
 
 const Dashboard = () => {
   const [groups, setGroups] = useState([]);
+  const [currentStudent, setCurrentStudent] = useState(null);
   const { getGroups } = useStudents();
   const { id } = useParams();
+  const { Modal, isOpen, handleOpenModal, handleCloseModal } = useModal();
 
   useEffect(() => {
     (async () => {
@@ -16,6 +19,11 @@ const Dashboard = () => {
       setGroups(groups);
     })();
   }, [getGroups]);
+
+  const handleOpenStudentDetails = (id) => {
+    setCurrentStudent(id);
+    handleOpenModal(true);
+  };
 
   if (!id && groups.length > 0) return <Navigate to={`/group/${groups[0]}`} />;
 
@@ -30,7 +38,8 @@ const Dashboard = () => {
         ))}
       </StyledGroupsWrapper>
       <ViewWrapper>
-        <StudentsList />
+        <StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
+        {isOpen ? <Modal handleCloseModal={handleCloseModal}>{currentStudent}</Modal> : null}
       </ViewWrapper>
     </div>
   );

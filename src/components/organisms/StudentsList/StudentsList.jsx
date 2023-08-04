@@ -4,7 +4,7 @@ import UsersListItem from '../../molecules/UsersListItem/UsersListItem';
 import { StyledWrapper } from './StudentsList.styles';
 import { useState, useEffect } from 'react';
 
-const StudentsList = () => {
+const StudentsList = ({ handleOpenStudentDetails }) => {
   const [students, setStudents] = useState([]);
   const { id } = useParams();
   const { getStudents } = useStudents();
@@ -21,7 +21,7 @@ const StudentsList = () => {
       <StyledWrapper>
         <ul>
           {students.map((studentData) => (
-            <UsersListItem key={studentData.name} userData={studentData} />
+            <UsersListItem handleOpenStudentDetails={handleOpenStudentDetails} key={studentData.name} userData={studentData} />
           ))}
         </ul>
       </StyledWrapper>

@@ -4,11 +4,11 @@ import DeleteButton from '../../atoms/DeleteButton/DeleteButton';
 import { StyledLi, StyledAverage } from '../UsersListItem/UsersListItem.styles.jsx';
 import { UsersContext } from '../../../providers/UsersProvider';
 
-const UsersListItem = ({ userData: { name, average, attendance = '0%' } }) => {
+const UsersListItem = ({ userData: { id, name, average, attendance = '0%' }, handleOpenStudentDetails }) => {
   const { deleteUser } = useContext(UsersContext);
 
   return (
-    <StyledLi>
+    <StyledLi onClick={() => handleOpenStudentDetails(id)}>
       <StyledAverage average={average}>
         <p>{average}</p>
       </StyledAverage>

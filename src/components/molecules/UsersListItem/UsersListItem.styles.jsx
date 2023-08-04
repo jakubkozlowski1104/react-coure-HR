@@ -6,6 +6,7 @@ export const StyledLi = styled.li`
   position: relative;
   padding: 20px;
   gap: 20px;
+  cursor: pointer;
   &:not(:last-child)::after {
     content: '';
     position: absolute;

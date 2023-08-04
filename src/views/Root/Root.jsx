@@ -1,4 +1,3 @@
-import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../../assets/styles/GlobalStyle.jsx';
 import { theme } from '../../assets/styles/Theme.jsx';

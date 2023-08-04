@@ -4,7 +4,7 @@ import { ModalWrapper } from './Modal.styles';
 
 const modalContainer = document.getElementById('modal-container');
 
-const Modal = ({ handleClose }) => {
+const Modal = ({ handleCloseModal, children }) => {
   const modalNode = document.createElement('div');
 
   useEffect(() => {
@@ -16,7 +16,8 @@ const Modal = ({ handleClose }) => {
 
   return ReactDOM.createPortal(
     <ModalWrapper>
-      Hello modal <button onClick={handleClose}>close X</button>
+      {children}
+      <button onClick={() => handleCloseModal(handleCloseModal)}>close X</button>
     </ModalWrapper>,
     modalNode
   );
