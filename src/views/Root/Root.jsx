@@ -1,3 +1,4 @@
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../../assets/styles/GlobalStyle.jsx';
 import { theme } from '../../assets/styles/Theme.jsx';
@@ -6,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import MainTemplate from '../../components/templates/MainTemplate/MainTemplate.jsx';
 import Dashboard from '../Dashboard/Dashboard.jsx';
 import Modal from '../../components/organisms/Modal/Modal.jsx';
+import Button from '../../components/atoms/Button/Button.jsx';
 
 const Root = () => {
   return (
@@ -13,7 +15,6 @@ const Root = () => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <MainTemplate>
-          <Modal />
           <Wrapper>
             <Routes>
               <Route path="/" element={<Navigate to="/group" />} />
