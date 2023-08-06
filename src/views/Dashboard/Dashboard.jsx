@@ -8,6 +8,28 @@ import useModal from '../../components/organisms/Modal/useModal.jsx';
 import StudentDetails from '../../components/molecules/StudentDetails/StudentDetails.jsx';
 import Modal from '../../components/organisms/Modal/Modal.jsx';
 
+const mockStudent = {
+  id: '1',
+  name: 'Adam Romański',
+  attendance: '39%',
+  average: '2.3',
+  group: 'A',
+  grades: [
+    {
+      subject: 'Buisness Technology',
+      average: '3.3',
+    },
+    {
+      subject: 'Marketing',
+      average: '4.7',
+    },
+    {
+      subject: 'Human-Computer Interaction',
+      average: '2.9',
+    },
+  ],
+};
+
 const Dashboard = () => {
   const [groups, setGroups] = useState([]);
   const [currentStudent, setCurrentStudent] = useState(null);
@@ -31,7 +53,7 @@ const Dashboard = () => {
   if (!id && groups.length > 0) return <Navigate to={`/group/${groups[0]}`} />;
 
   return (
-    <>
+    <div>
       <StyledGroupsWrapper>
         <p>Group {id}</p>
         {groups.map((group) => (
@@ -42,13 +64,11 @@ const Dashboard = () => {
       </StyledGroupsWrapper>
       <ViewWrapper>
         <StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
-        {isOpen ? (
-          <Modal handleCloseModal={handleCloseModal}>
-            <StudentDetails studentDetails={currentStudent} />
-          </Modal>
-        ) : null}
+        <Modal isOpen={isOpen} handleCloseModal={handleCloseModal}>
+          <StudentDetails studentDetails={mockStudent} />
+        </Modal>
       </ViewWrapper>
-    </>
+    </div>
   );
 };
 
