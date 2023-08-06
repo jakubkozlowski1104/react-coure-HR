@@ -17,15 +17,15 @@ const mockStudent = {
   grades: [
     {
       subject: 'Buisness Technology',
-      average: '3.3',
+      averageSub: '3.3',
     },
     {
       subject: 'Marketing',
-      average: '4.7',
+      averageSub: '4.7',
     },
     {
       subject: 'Human-Computer Interaction',
-      average: '2.9',
+      averageSub: '2.9',
     },
   ],
 };

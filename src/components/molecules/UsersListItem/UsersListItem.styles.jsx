@@ -39,8 +39,8 @@ export const StyledLi = styled.li`
 `;
 
 export const StyledAverage = styled.div`
-  width: 40px;
-  height: 40px;
+  width: ${({ $isBig }) => ($isBig ? '70px' : '40px')};
+  height: ${({ $isBig }) => ($isBig ? '70px' : '40px')};
   background-color: ${({ average, theme }) => {
     if (average > 4) return theme.colors.success;
     if (average > 3) return theme.colors.warning;
@@ -53,7 +53,7 @@ export const StyledAverage = styled.div`
   align-items: center;
 
   p {
-    font-size: ${({ theme }) => theme.fontSize.l};
+    font-size: ${({ $isBig, theme }) => ($isBig ? theme.fontSize.xxl : theme.fontSize.l)};
     font-weight: bold;
     color: ${({ theme }) => theme.colors.white};
   }

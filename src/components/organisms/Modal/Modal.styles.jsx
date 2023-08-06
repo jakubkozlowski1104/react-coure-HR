@@ -15,7 +15,7 @@ export const ModalWrapper = styled(ReactModal)`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 50px;
+  padding: 20px;
   flex-direction: column;
   opacity: 1;
 `;
