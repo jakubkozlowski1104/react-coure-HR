@@ -5,11 +5,12 @@ import { StyledGroupsWrapper, StyledLink } from './Dashboard.styles.jsx';
 import { useStudents } from '../../hooks/useStudents.jsx';
 import { useState, useEffect } from 'react';
 import useModal from '../../components/organisms/Modal/useModal.jsx';
+import StudentDetails from '../../components/molecules/StudentDetails/StudentDetails.jsx';
 
 const Dashboard = () => {
   const [groups, setGroups] = useState([]);
   const [currentStudent, setCurrentStudent] = useState(null);
-  const { getGroups } = useStudents();
+  const { getGroups, getStudentById } = useStudents();
   const { id } = useParams();
   const { Modal, isOpen, handleOpenModal, handleCloseModal } = useModal();
 
@@ -20,8 +21,9 @@ const Dashboard = () => {
     })();
   }, [getGroups]);
 
-  const handleOpenStudentDetails = (id) => {
-    setCurrentStudent(id);
+  const handleOpenStudentDetails = async (id) => {
+    const student = await getStudentById(id);
+    setCurrentStudent(student);
     handleOpenModal(true);
   };
 
@@ -39,7 +41,11 @@ const Dashboard = () => {
       </StyledGroupsWrapper>
       <ViewWrapper>
         <StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
-        {isOpen ? <Modal handleCloseModal={handleCloseModal}>{currentStudent}</Modal> : null}
+        {isOpen ? (
+          <Modal handleCloseModal={handleCloseModal}>
+            <StudentDetails studentDetails={currentStudent} />
+          </Modal>
+        ) : null}
       </ViewWrapper>
     </div>
   );
