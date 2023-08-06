@@ -4,7 +4,7 @@ const Modal = ({ isOpen, handleCloseModal, children }) => {
   return (
     <ModalWrapper ariaHideApp={false} isOpen={isOpen} onRequestClose={handleCloseModal}>
       {children}
-      <button onClick={() => handleCloseModal(handleCloseModal)}>close X</button>
+      <button onClick={() => handleCloseModal(handleCloseModal)}>close</button>
     </ModalWrapper>
   );
 };

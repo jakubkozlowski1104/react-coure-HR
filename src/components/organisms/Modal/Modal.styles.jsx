@@ -18,4 +18,11 @@ export const ModalWrapper = styled(ReactModal)`
   padding: 20px;
   flex-direction: column;
   opacity: 1;
+
+  button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
 `;
